@@ -1,0 +1,31 @@
+<my-date-range-picker [options]="myDatePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)">
+</my-date-range-picker>
+{{model | json}}
+
+
+<p>ngbotstrap</p>
+
+<ngb-datepicker [displayMonths]="displayMonths" [navigation]="navigation" [showWeekNumbers]="showWeekNumbers" [outsideDays]="outsideDays">
+</ngb-datepicker>
+
+<p>ngBootstrap prueba</p>
+<p>Example of the range selection</p>
+
+<ngb-datepicker #dp (select)="onDateSelection($event)" [dayTemplate]="t" [displayMonths]="displayMonths" [navigation]="navigation" [showWeekNumbers]="showWeekNumbers" [outsideDays]="outsideDays" navigation="none">
+</ngb-datepicker>
+
+<ng-template #t let-date="date" let-focused="focused">
+  <span class="custom-day"
+        [class.focused]="focused"
+        [class.range]="isRange(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+</ng-template>
+
+<hr>
+
+<pre>From: {{ fromDate | json }} </pre>
+<pre>To: {{ toDate | json }} </pre>
